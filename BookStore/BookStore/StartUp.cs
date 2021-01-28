@@ -4,15 +4,16 @@ using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Threading.Tasks;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace BookStore
 {
     public class Startup
     {
-        public void ConfigruationService(IServiceProvider service)
+        public void ConfigureServices(IServiceCollection service)
         {
-
+            service.AddMvc();
         }
 
         public void Configure(IApplicationBuilder app,IWebHostEnvironment env)
@@ -20,10 +21,7 @@ namespace BookStore
             app.UseRouting();
             app.UseEndpoints(endpoints =>
             {
-                endpoints.MapGet("/", async context =>
-                {
-                    await context.Response.WriteAsync("Welcome to Web application");
-                });
+                endpoints.MapDefaultControllerRoute();
             });
         }
     }
