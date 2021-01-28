@@ -11,3 +11,8 @@ C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debu
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.dll
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.pdb
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.genruntimeconfig.cache
+C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.RazorTargetAssemblyInfo.cache
+C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\staticwebassets\BookStore.StaticWebAssets.Manifest.cache
+C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\staticwebassets\BookStore.StaticWebAssets.xml
+C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
