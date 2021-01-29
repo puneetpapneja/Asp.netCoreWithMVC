@@ -22,19 +22,22 @@ namespace BookStore.Controllers
             return View();
         }
 
-        public List<BookModel> GetAllBooks() 
+        public ViewResult GetAllBooks() 
         {
-            return _bookRepo.GetAllBooks();
+            //return _bookRepo.GetAllBooks();
+            return View();
         }
 
-        public BookModel GetById(int id) 
+        public ViewResult GetById(int id) 
         {
-            return _bookRepo.GetById(id);
+            //return _bookRepo.GetById(id);
+            return View();
         }
 
-        public List<BookModel> Search(string bookName,string authorName)
+        public ViewResult Search(string bookName,string authorName)
         {
-            return _bookRepo.Search(bookName, authorName);
+            //eturn _bookRepo.Search(bookName, authorName);
+            return View();
         }
     }
 }
