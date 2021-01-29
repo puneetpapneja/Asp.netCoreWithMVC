@@ -14,6 +14,9 @@ namespace BookStore
         public void ConfigureServices(IServiceCollection service)
         {
             service.AddMvc();
+#if DEBUG
+            service.AddRazorPages().AddRazorRuntimeCompilation();
+#endif
         }
 
         public void Configure(IApplicationBuilder app,IWebHostEnvironment env)

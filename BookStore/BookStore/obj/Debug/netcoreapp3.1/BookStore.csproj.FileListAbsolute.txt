@@ -87,8 +87,6 @@ C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\bin\Debu
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\bin\Debug\netcoreapp3.1\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
-C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.csproj.CoreCompileInputs.cache
-C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\BookStore.csproj.CopyComplete
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\bin\Debug\netcoreapp3.1\BookStore.Views.dll
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\bin\Debug\netcoreapp3.1\BookStore.Views.pdb
@@ -103,3 +101,4 @@ C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debu
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Book\GetAllBooks.cshtml.g.cs
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Book\GetById.cshtml.g.cs
 C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\obj\Debug\netcoreapp3.1\Razor\Views\Book\Search.cshtml.g.cs
+C:\Users\Puneet\Documents\puneet\Asp.netCoreWithMVC\BookStore\BookStore\bin\Debug\netcoreapp3.1\libman.json
