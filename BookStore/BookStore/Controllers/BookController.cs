@@ -39,5 +39,23 @@ namespace BookStore.Controllers
             //eturn _bookRepo.Search(bookName, authorName);
             return View();
         }
+
+        public ViewResult Asp()
+        {
+            //eturn _bookRepo.Search(bookName, authorName);
+            return View();
+        }
+
+        public ViewResult Php()
+        {
+            //eturn _bookRepo.Search(bookName, authorName);
+            return View();
+        }
+
+        public ViewResult Android()
+        {
+            //eturn _bookRepo.Search(bookName, authorName);
+            return View();
+        }
     }
 }

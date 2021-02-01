@@ -3,13 +3,38 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>BookStore</title>    
+    <title>@ViewData["Title"] | BookStore</title>
     <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="~/css/site.css" rel="stylesheet" />
     <script src="~/lib/jquery/jquery.min.js"></script>
 </head>
 <body>    
     <main role="main">
-        @RenderBody()
+        <div class="bs-example">
+            <nav class="navbar navbar-expand-md navbar-light bg-light">
+                <a asp-controller="Home" asp-action="Index" class="navbar-brand">Book Store</a>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarCollapse">
+                    <div class="navbar-nav">
+                      
+                        <a asp-controller="Book" asp-action="Asp" class="nav-item nav-link">Asp.net</a>
+                        <a asp-controller="Book" asp-action="Php" class="nav-item nav-link">PHP</a>
+                        <a asp-controller="Book" asp-action="Android" class="nav-item nav-link">Android</a>
+                    </div>
+                    <div class="navbar-nav ml-auto">
+                        <a href="#" class="nav-item nav-link">Login</a>
+                    </div>
+                </div>
+            </nav>
+
+
+        </div>
+        <div class="container">
+            @RenderBody()
+        </div>
     </main>   
 </body>
 </html>

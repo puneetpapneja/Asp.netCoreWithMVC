@@ -22,6 +22,7 @@ namespace BookStore
         public void Configure(IApplicationBuilder app,IWebHostEnvironment env)
         {
             app.UseRouting();
+            app.UseStaticFiles();
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapDefaultControllerRoute();
