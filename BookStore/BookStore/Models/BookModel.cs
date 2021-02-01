@@ -10,5 +10,7 @@ namespace BookStore.Models
         public int Id { get; set; }
         public string BookName { get; set; }
         public string AutherName { get; set; }
+        public string Description { get; set; }
+        public string Image { get; set; }
     }
 }

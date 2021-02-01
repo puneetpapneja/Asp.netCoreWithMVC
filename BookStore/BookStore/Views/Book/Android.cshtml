@@ -6,3 +6,22 @@
 
 <h1>Android</h1>
 
+<div class="container">
+    <div class="row">
+
+        @foreach (BookModel book in Model)
+        {
+            <a asp-route="bookDetails" asp-route-id="@book.Id">
+                <div class="card" style="width:17rem;">
+                    <img class="card-img-top" src="~/img/@book.Image" alt="Card image top">
+                    <div class="card-body">
+                        <h5 class="card-title">@book.BookName</h5>
+                        <h6 class="card-subtitle">@book.AutherName</h6>
+                    </div>
+                </div>
+            </a>
+        }
+
+
+    </div>
+</div>

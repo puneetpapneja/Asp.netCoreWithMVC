@@ -18,9 +18,14 @@ namespace BookStore.Models.Repository
             return Books().Where(x => x.Id == id).FirstOrDefault();
         }
 
-        public List<BookModel> Search(string bookName, string autherName)
+        public List<BookModel> SearchByBookName(string bookName)
         {
-            
+
+            return Books().Where(x => x.BookName.ToLower().Contains(!string.IsNullOrEmpty(bookName) ? bookName : "")).ToList();
+        }
+
+        public List<BookModel> Search(string bookName, string autherName)
+        {            
 
             return Books().Where(x => x.BookName.ToLower().Contains(!string.IsNullOrEmpty(bookName) ? bookName : "") || x.AutherName.ToLower().Contains(!string.IsNullOrEmpty(autherName)? autherName:"")).ToList();
         }
@@ -29,10 +34,10 @@ namespace BookStore.Models.Repository
         {
             return new List<BookModel>()
             {
-                new BookModel(){Id=1,BookName="MVC",AutherName="John"},
-                new BookModel(){Id=2,BookName="Asp.Net Core",AutherName="George Orwell"},
-                new BookModel(){Id=3,BookName="Asp.Net with MVC",AutherName="Lewis Carroll"},
-                new BookModel(){Id=4,BookName="Asp.Net Core with MVC",AutherName="Mark Twain"},
+                new BookModel(){Id=1,BookName="PHP",AutherName="John",Image="asp-net4-5-blackbook_1_100x100.jpg",Description="Book description "},
+                new BookModel(){Id=2,BookName="Asp.Net Core",AutherName="George Orwell",Image="asp-net4-5-blackbook_1_100x100.jpg",Description="Book description "},
+                new BookModel(){Id=3,BookName="Asp.Net with MVC",AutherName="Lewis Carroll",Image="asp-net4-5-blackbook_1_100x100.jpg",Description="Book description "},
+                new BookModel(){Id=4,BookName="Android",AutherName="Mark Twain",Image="asp-net4-5-blackbook_1_100x100.jpg",Description="Book description "},
             };
         }
     }

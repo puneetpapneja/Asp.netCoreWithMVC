@@ -27,11 +27,12 @@ namespace BookStore.Controllers
             //return _bookRepo.GetAllBooks();
             return View();
         }
-
+        
+        [Route("bookDetails/{id}",Name ="bookDetails")]
         public ViewResult GetById(int id) 
         {
-            //return _bookRepo.GetById(id);
-            return View();
+            var book =  _bookRepo.GetById(id);
+            return View(book);
         }
 
         public ViewResult Search(string bookName,string authorName)
@@ -42,20 +43,20 @@ namespace BookStore.Controllers
 
         public ViewResult Asp()
         {
-            //eturn _bookRepo.Search(bookName, authorName);
-            return View();
+            var books =  _bookRepo.SearchByBookName("asp");
+            return View(books);
         }
 
         public ViewResult Php()
         {
-            //eturn _bookRepo.Search(bookName, authorName);
-            return View();
+            var books = _bookRepo.SearchByBookName("php");
+            return View(books);
         }
 
         public ViewResult Android()
         {
-            //eturn _bookRepo.Search(bookName, authorName);
-            return View();
+            var books = _bookRepo.SearchByBookName("android");
+            return View(books);
         }
     }
 }
