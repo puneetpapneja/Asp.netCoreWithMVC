@@ -9,6 +9,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore.SqlServer;
 using Microsoft.EntityFrameworkCore;
 using BookStore.Models;
+using BookStore.Models.Repository;
 
 namespace BookStore
 {
@@ -22,6 +23,7 @@ namespace BookStore
 #if DEBUG
             service.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
+            service.AddScoped<BookRepo, BookRepo>();
         }
 
         public void Configure(IApplicationBuilder app,IWebHostEnvironment env)

@@ -8,6 +8,27 @@ namespace BookStore.Models.Repository
 {
     public class BookRepo
     {
+        private readonly BookDBContext _context = null;
+
+        public BookRepo(BookDBContext context)
+        {
+            _context = context;
+        }
+
+        public int Add(BookModel book)
+        {
+            BookModel newBook = new BookModel()
+            {
+                AutherName = book.AutherName,
+                BookName = book.BookName,
+                Description = book.Description
+            };
+
+            _context.bookModel.Add(newBook);
+            _context.SaveChanges();
+            return newBook.Id;
+        }
+
         public List<BookModel> GetAllBooks()
         {
             return Books().ToList();

@@ -11,9 +11,9 @@ namespace BookStore.Controllers
     public class HomeController : Controller
     {
         private readonly BookRepo _bookRepo = null;
-        public HomeController()
+        public HomeController(BookRepo bookRepo)
         {
-            _bookRepo = new BookRepo();
+            _bookRepo = bookRepo;
         }
 
         public ViewResult Index()

@@ -12,9 +12,9 @@ namespace BookStore.Controllers
     {
 
         private readonly BookRepo _bookRepo = null;
-        public BookController()
+        public BookController(BookRepo bookRepo)
         {
-            _bookRepo = new BookRepo();
+            _bookRepo = bookRepo;
         }
 
         public IActionResult Index()
@@ -57,6 +57,23 @@ namespace BookStore.Controllers
         {
             var books = _bookRepo.SearchByBookName("android");
             return View(books);
+        }
+
+        public ViewResult AddNew(bool isSuccess= false)
+        {
+            ViewBag.isSuccess = isSuccess;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult AddNew(BookModel newBook)
+        {
+           int id =  _bookRepo.Add(newBook);
+            if (id > 0)
+            {
+                return RedirectToAction(nameof(AddNew), new { isSuccess= true });
+            }
+            return View();
         }
     }
 }

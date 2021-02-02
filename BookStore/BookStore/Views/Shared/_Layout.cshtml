@@ -7,8 +7,9 @@
     <link href="~/lib/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="~/css/site.css" rel="stylesheet" />
     <script src="~/lib/jquery/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/js/bootstrap.js"></script>
 </head>
-<body>    
+<body>
     <main role="main">
         <div class="bs-example">
             <nav class="navbar navbar-expand-md navbar-light bg-light">
@@ -19,10 +20,11 @@
 
                 <div class="collapse navbar-collapse" id="navbarCollapse">
                     <div class="navbar-nav">
-                      
+
                         <a asp-controller="Book" asp-action="Asp" class="nav-item nav-link">Asp.net</a>
                         <a asp-controller="Book" asp-action="Php" class="nav-item nav-link">PHP</a>
                         <a asp-controller="Book" asp-action="Android" class="nav-item nav-link">Android</a>
+                        <a asp-controller="Book" asp-action="AddNew" class="nav-item nav-link">Add New Book</a>
                     </div>
                     <div class="navbar-nav ml-auto">
                         <a href="#" class="nav-item nav-link">Login</a>
@@ -35,6 +37,6 @@
         <div class="container">
             @RenderBody()
         </div>
-    </main>   
+    </main>
 </body>
 </html>
