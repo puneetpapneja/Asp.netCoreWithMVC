@@ -16,9 +16,9 @@ namespace BookStore.Controllers
             _bookRepo = bookRepo;
         }
 
-        public ViewResult Index()
+        public async Task<ViewResult> Index()
         {
-            var books = _bookRepo.GetAllBooks();
+            var books = await _bookRepo.GetAllBooks();
             return View(books);
         }
     }

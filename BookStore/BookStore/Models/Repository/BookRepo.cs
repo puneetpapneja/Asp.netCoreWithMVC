@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using BookStore.Models;
 
@@ -29,9 +30,9 @@ namespace BookStore.Models.Repository
             return newBook.Id;
         }
 
-        public List<BookModel> GetAllBooks()
+        public async Task<List<BookModel>> GetAllBooks()
         {
-            return Books().ToList();
+            return await _context.bookModel.ToListAsync<BookModel>();            
         }
 
         public BookModel GetById(int id)
@@ -53,6 +54,7 @@ namespace BookStore.Models.Repository
 
         public List<BookModel> Books()
         {
+            
             return new List<BookModel>()
             {
                 new BookModel(){Id=1,BookName="PHP",AutherName="John",Image="asp-net4-5-blackbook_1_100x100.jpg",Description="Book description "},
