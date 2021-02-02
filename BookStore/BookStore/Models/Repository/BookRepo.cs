@@ -15,7 +15,7 @@ namespace BookStore.Models.Repository
             _context = context;
         }
 
-        public int Add(BookModel book)
+        public async Task<int> Add(BookModel book)
         {
             BookModel newBook = new BookModel()
             {
@@ -24,8 +24,8 @@ namespace BookStore.Models.Repository
                 Description = book.Description
             };
 
-            _context.bookModel.Add(newBook);
-            _context.SaveChanges();
+            await _context.bookModel.AddAsync(newBook);
+            await _context.SaveChangesAsync();
             return newBook.Id;
         }
 

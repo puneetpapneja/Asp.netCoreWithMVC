@@ -66,9 +66,9 @@ namespace BookStore.Controllers
         }
 
         [HttpPost]
-        public IActionResult AddNew(BookModel newBook)
+        public async Task<IActionResult> AddNew(BookModel newBook)
         {
-           int id =  _bookRepo.Add(newBook);
+           int id = await _bookRepo.Add(newBook);
             if (id > 0)
             {
                 return RedirectToAction(nameof(AddNew), new { isSuccess= true });
