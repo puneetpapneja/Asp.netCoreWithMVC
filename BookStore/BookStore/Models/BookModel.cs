@@ -25,6 +25,6 @@ namespace BookStore.Models
         public string Image { get; set; }
 
         [Required]
-        public string Language { get; set; }
+        public int Language { get; set; }
     }
 }
