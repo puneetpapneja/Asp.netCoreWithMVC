@@ -35,9 +35,18 @@ namespace BookStore.Models.Repository
             return await _context.bookModel.ToListAsync<BookModel>();            
         }
 
-        public BookModel GetById(int id)
+        public async Task<BookModel> GetById(int id)
         {
-            return Books().Where(x => x.Id == id).FirstOrDefault();
+           var data =  await _context.bookModel.FindAsync(id);
+            if(data != null)
+            {
+                return new BookModel(){
+                    AutherName = data.AutherName,
+                    BookName = data.BookName,
+                    Image = data.Image
+                };
+            }
+            return null;
         }
 
         public List<BookModel> SearchByBookName(string bookName)

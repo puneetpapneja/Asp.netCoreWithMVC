@@ -29,9 +29,9 @@ namespace BookStore.Controllers
         }
         
         [Route("bookDetails/{id}",Name ="bookDetails")]
-        public ViewResult GetById(int id) 
+        public async Task<ViewResult> GetById(int id) 
         {
-            var book =  _bookRepo.GetById(id);
+            var book =  await  _bookRepo.GetById(id);
             return View(book);
         }
 
@@ -59,20 +59,25 @@ namespace BookStore.Controllers
             return View(books);
         }
 
-        public ViewResult AddNew(bool isSuccess= false)
+        public ViewResult AddNew(bool isSuccess= false,int id = 0)
         {
             ViewBag.isSuccess = isSuccess;
+            ViewBag.Id = id;
             return View();
         }
 
         [HttpPost]
         public async Task<IActionResult> AddNew(BookModel newBook)
         {
-           int id = await _bookRepo.Add(newBook);
-            if (id > 0)
+            if (ModelState.IsValid)
             {
-                return RedirectToAction(nameof(AddNew), new { isSuccess= true });
+                int id = await _bookRepo.Add(newBook);
+                if (id > 0)
+                {
+                    return RedirectToAction(nameof(AddNew), new { isSuccess = true, Id = id });
+                }                
             }
+
             return View();
         }
     }
