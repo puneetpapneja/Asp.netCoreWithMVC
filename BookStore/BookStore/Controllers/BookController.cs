@@ -61,9 +61,14 @@ namespace BookStore.Controllers
 
         public ViewResult AddNew(bool isSuccess= false,int id = 0)
         {
+            var book = new BookModel()
+            {
+                Language = "English"
+            };
+
             ViewBag.isSuccess = isSuccess;
             ViewBag.Id = id;
-            return View();
+            return View(book);
         }
 
         [HttpPost]
