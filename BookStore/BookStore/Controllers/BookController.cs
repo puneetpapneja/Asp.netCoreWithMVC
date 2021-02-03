@@ -78,6 +78,7 @@ namespace BookStore.Controllers
                 }                
             }
 
+            ModelState.AddModelError("", "this is my custom error");
             return View();
         }
     }
