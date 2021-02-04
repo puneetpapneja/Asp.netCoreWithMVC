@@ -4,6 +4,7 @@ using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using BookStore.Models;
+using BookStore.Data;
 
 namespace BookStore.Models.Repository
 {
@@ -18,35 +19,50 @@ namespace BookStore.Models.Repository
 
         public async Task<int> Add(BookModel book)
         {
-            BookModel newBook = new BookModel()
+            var newBook = new Book()
             {
                 AutherName = book.AutherName,
                 BookName = book.BookName,
-                Description = book.Description
+                Description = book.Description,
+                LanguageId = book.LanguageId
             };
 
-            await _context.bookModel.AddAsync(newBook);
+            await _context.book.AddAsync(newBook);
             await _context.SaveChangesAsync();
             return newBook.Id;
         }
 
         public async Task<List<BookModel>> GetAllBooks()
         {
-            return await _context.bookModel.ToListAsync<BookModel>();            
+            
+            List<BookModel> allBooks = await (_context.book.Select(book => new BookModel()
+            {
+                Id = book.Id,
+                BookName = book.BookName,
+                AutherName = book.AutherName,
+                Description = book.Description,
+                Image = string.IsNullOrEmpty(book.Image) ? "asp-net4-5-blackbook_1_100x100.jpg" : book.Image,
+                LanguageId = book.LanguageId,
+                LanguageName = book.Language.Name
+            })).ToListAsync();
+
+            return allBooks;
         }
 
         public async Task<BookModel> GetById(int id)
         {
-           var data =  await _context.bookModel.FindAsync(id);
-            if(data != null)
+            return await _context.book.Where(x => x.Id == id).Select(book => new BookModel()
             {
-                return new BookModel(){
-                    AutherName = data.AutherName,
-                    BookName = data.BookName,
-                    Image = data.Image
-                };
-            }
-            return null;
+                BookName = book.BookName,
+                AutherName = book.AutherName,
+                Image = string.IsNullOrEmpty(book.Image) ? "asp-net4-5-blackbook_1_100x100.jpg" : book.Image,
+                LanguageId = book.LanguageId,
+                LanguageName = book.Language.Name,
+                Description = book.Description
+                
+            }).FirstOrDefaultAsync();
+
+            
         }
 
         public List<BookModel> SearchByBookName(string bookName)
@@ -55,10 +71,22 @@ namespace BookStore.Models.Repository
             return Books().Where(x => x.BookName.ToLower().Contains(!string.IsNullOrEmpty(bookName) ? bookName : "")).ToList();
         }
 
-        public List<BookModel> Search(string bookName, string autherName)
+        public List<BookModel> Search(string bookName, string autherName = null)
         {            
-
-            return Books().Where(x => x.BookName.ToLower().Contains(!string.IsNullOrEmpty(bookName) ? bookName : "") || x.AutherName.ToLower().Contains(!string.IsNullOrEmpty(autherName)? autherName:"")).ToList();
+            return _context.book.Where(x => x.BookName.ToLower().Contains(!string.IsNullOrEmpty(bookName) ? bookName : "") || 
+                (!string.IsNullOrEmpty(autherName) && x.AutherName.ToLower().Contains(!string.IsNullOrEmpty(autherName) ? autherName : "")))
+                .Select(book => new BookModel()
+                {
+                    Id = book.Id,
+                    BookName = book.BookName,
+                    AutherName = book.AutherName,
+                    Description = book.Description,
+                    Image = string.IsNullOrEmpty(book.Image) ? "asp-net4-5-blackbook_1_100x100.jpg" : book.Image,
+                    LanguageId = book.LanguageId,
+                    LanguageName = book.Language.Name
+                })
+                .ToList();
+            //return Books().Where(x => x.BookName.ToLower().Contains(!string.IsNullOrEmpty(bookName) ? bookName : "") || x.AutherName.ToLower().Contains(!string.IsNullOrEmpty(autherName)? autherName:"")).ToList();
         }
 
         public List<BookModel> Books()

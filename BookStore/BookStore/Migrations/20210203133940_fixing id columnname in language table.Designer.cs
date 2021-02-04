@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace BookStore.Migrations
 {
     [DbContext(typeof(BookDBContext))]
-    [Migration("20210203073231_added language field")]
-    partial class addedlanguagefield
+    [Migration("20210203133940_fixing id columnname in language table")]
+    partial class fixingidcolumnnameinlanguagetable
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace BookStore.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("ProductVersion", "5.0.2");
 
-            modelBuilder.Entity("BookStore.Models.BookModel", b =>
+            modelBuilder.Entity("BookStore.Data.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -44,13 +44,46 @@ namespace BookStore.Migrations
                     b.Property<string>("Image")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("Language")
-                        .IsRequired()
+                    b.Property<int>("LanguageId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("LanguageId")
+                        .IsUnique();
+
+                    b.ToTable("book");
+                });
+
+            modelBuilder.Entity("BookStore.Data.Language", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("bookModel");
+                    b.ToTable("language");
+                });
+
+            modelBuilder.Entity("BookStore.Data.Book", b =>
+                {
+                    b.HasOne("BookStore.Data.Language", "Language")
+                        .WithOne("Book")
+                        .HasForeignKey("BookStore.Data.Book", "LanguageId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Language");
+                });
+
+            modelBuilder.Entity("BookStore.Data.Language", b =>
+                {
+                    b.Navigation("Book");
                 });
 #pragma warning restore 612, 618
         }

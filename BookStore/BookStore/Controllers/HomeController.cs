@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using BookStore.Models;
 using BookStore.Models.Repository;
-
+using BookStore.Data;
 namespace BookStore.Controllers
 {
     public class HomeController : Controller

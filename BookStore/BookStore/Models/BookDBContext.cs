@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using BookStore.Data;
 
 namespace BookStore.Models
 {
@@ -13,6 +14,7 @@ namespace BookStore.Models
 
         }
 
-        public DbSet<BookModel> bookModel  { get; set; }
+        public DbSet<Book> book  { get; set; }
+        public DbSet<Language> language  { get; set; }
     }
 }

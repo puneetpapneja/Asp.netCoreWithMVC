@@ -24,6 +24,7 @@ namespace BookStore
             service.AddRazorPages().AddRazorRuntimeCompilation();
 #endif
             service.AddScoped<BookRepo, BookRepo>();
+            service.AddScoped<LanguageRepo, LanguageRepo>();
         }
 
         public void Configure(IApplicationBuilder app,IWebHostEnvironment env)

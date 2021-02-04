@@ -13,60 +13,48 @@ namespace BookStore.Controllers
     {
 
         private readonly BookRepo _bookRepo = null;
-        public BookController(BookRepo bookRepo)
+        private readonly LanguageRepo _languageRepo = null;
+        public BookController(BookRepo bookRepo, LanguageRepo languageRepo)
         {
             _bookRepo = bookRepo;
+            _languageRepo = languageRepo;
         }
 
         public IActionResult Index()
         {
             return View();
         }
-
-        public ViewResult GetAllBooks() 
-        {
-            //return _bookRepo.GetAllBooks();
-            return View();
-        }
-        
+                
         [Route("bookDetails/{id}",Name ="bookDetails")]
         public async Task<ViewResult> GetById(int id) 
         {
             var book =  await  _bookRepo.GetById(id);
             return View(book);
-        }
-
-        public ViewResult Search(string bookName,string authorName)
-        {
-            //eturn _bookRepo.Search(bookName, authorName);
-            return View();
-        }
+        }        
 
         public ViewResult Asp()
         {
-            var books =  _bookRepo.SearchByBookName("asp");
+            var books =  _bookRepo.Search("asp");
             return View(books);
         }
 
         public ViewResult Php()
         {
-            var books = _bookRepo.SearchByBookName("php");
+            var books = _bookRepo.Search("php");
             return View(books);
         }
 
         public ViewResult Android()
         {
-            var books = _bookRepo.SearchByBookName("android");
+            var books = _bookRepo.Search("android");
             return View(books);
         }
 
-        public ViewResult AddNew(bool isSuccess = false, int id = 0)
+        public async Task<ViewResult> AddNew(bool isSuccess = false, int id = 0)
         {
-            var book = new BookModel()
-            {
-                Language = 1
-            };
-            ViewBag.language = new SelectList(GetLanguages(), "ID", "Text");
+            var book = new BookModel();            
+            var languages = await _languageRepo.GetAll();
+            ViewBag.language = new SelectList(languages, "Id", "Name");
             ViewBag.isSuccess = isSuccess;
             ViewBag.Id = id;
             return View(book);
@@ -83,18 +71,11 @@ namespace BookStore.Controllers
                     return RedirectToAction(nameof(AddNew), new { isSuccess = true, Id = id });
                 }                
             }
-            ViewBag.language = new SelectList(GetLanguages(),"ID","Text");
+            var languages = await _languageRepo.GetAll();
+            ViewBag.language = new SelectList(languages,"Id","Name");
             //ModelState.AddModelError("", "this is my custom error");
             return View();
         }
 
-        private List<LanguageModel> GetLanguages()
-        {
-            return new List<LanguageModel>()
-            {
-                new LanguageModel(){ID=1,Text="Hindi"},
-                new LanguageModel(){ID=2,Text="English"}
-            };
-        }
     }
 }
